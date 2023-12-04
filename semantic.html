@@ -1,0 +1,84 @@
+<!-- semantic.html -->
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <!-- Meta tags for character set and responsiveness -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width" initial-scale=1 shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+  <!-- Custom CSS for styling -->
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- Page title -->
+  <title>Mi Página Estática</title>
+</head>
+
+<body>
+  <!-- Bootstrap container for content -->
+  <div class="container">
+    <!-- Navbar with Bootstrap styling -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">Autómatas II</a>
+
+      <!-- Navbar items -->
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <!-- Active link for the current page -->
+            <a class="nav-link" href="{{ url_for('index') }}">Analizador Léxico</a>
+          </li>
+          <li class="nav-item">
+            <!-- Link to the semantic analyzer page -->
+            <a class="nav-link" href="{{ url_for('semantic') }}">Analizador Semántico</a>
+          </li>
+          <li class="nav-item">
+            <!-- Link to the syntax analyzer page -->
+            <a class="nav-link" href="{{ url_for('syntax') }}">Analizador Sintáctico</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Heading for semantic content -->
+    <h1>Contenido Semántico</h1>
+    <!-- Form for semantic analysis -->
+    <div class="form-container">
+      <form method="post">
+        <!-- Textarea for user input -->
+        <div class="form-group">
+          <label for="semanticInput">Texto para Analizar:</label>
+          <textarea class="form-control" id="semanticInput" name="semanticInput" rows="4"></textarea>
+        </div>
+        <!-- Button for analysis -->
+        <input type="submit" class="btn btn-primary" id="exampleInputSubmit" value="Analizar">
+      </form>
+        {% if expresion %}
+            <div class="result-container">
+                <p class="mb-1"><strong>Expresión:</strong> {{ expresion }}</p>
+            </div>
+            <div class="result-container" style="color: {% if sentimiento == '1 star' %}red{% elif sentimiento == '2 stars' %}brown{% elif sentimiento == '3 stars' %}orange{% elif sentimiento == '4 stars' %}yellow{% elif sentimiento == '5 stars' %}green{% endif %}">
+            <div class="result-container">
+                <p class="mb-1"><strong>Sentimiento:</strong> {{ sentimiento }}</p>
+            </div>
+
+        {% endif %}
+    </div>
+  </div>
+  <!-- Bootstrap JavaScript dependencies -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"
+    integrity="sha384-JBGCtSHUpv5K1aGFc0deK9fyA8l0/QpibKqqv2A7hOmZApQ/9JlfaO5/D8QH86fP"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JmK8UqoIZlCm+a6j7V4XrJSKkGlcAua8SIcuto9Uq87A/2z6VrDZ4u5c4p+2G8W5"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>
